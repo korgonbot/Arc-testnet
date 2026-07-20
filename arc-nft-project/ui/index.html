@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arc NFT Launchpad Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">Arc Testnet • NFT Launchpad Studio</p>
+          <h1>Prototype, test, and refine your Arc NFT launch flow.</h1>
+          <p class="hero-text">
+            Connect your wallet, inspect the contract state, and exercise public minting,
+            GTD minting, approvals, and admin controls from one polished experience.
+          </p>
+          <div class="hero-actions">
+            <button id="connectButton" class="button primary">Connect Wallet</button>
+            <button id="refreshButton" class="button secondary">Refresh State</button>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-pill">Current wallet</div>
+          <div id="walletAddress" class="wallet-address">Not connected</div>
+          <div class="stats-grid">
+            <div>
+              <span>Network</span>
+              <strong id="networkName">Waiting</strong>
+            </div>
+            <div>
+              <span>Owner</span>
+              <strong id="ownerBadge">Pending</strong>
+            </div>
+            <div>
+              <span>Supply</span>
+              <strong id="supplyBadge">0 / 0</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="feature-grid">
+        <article class="feature-card">
+          <h3>Merkle GTD whitelist</h3>
+          <p>Prepare for a verifiable allowlist flow with per-wallet proofs and claim windows.</p>
+          <span class="status-chip planned">Planned upgrade</span>
+        </article>
+        <article class="feature-card">
+          <h3>Per-wallet GTD allocation</h3>
+          <p>Support capped presale allocations so each whitelisted wallet can mint a fixed quantity.</p>
+          <span class="status-chip planned">Planned upgrade</span>
+        </article>
+        <article class="feature-card">
+          <h3>Team reserve cap</h3>
+          <p>Protect the collection from owner-mint overrun by reserving a dedicated share of supply.</p>
+          <span class="status-chip planned">Planned upgrade</span>
+        </article>
+        <article class="feature-card">
+          <h3>USDC decimals config</h3>
+          <p>Validate pricing logic and token precision for Arc’s USDC implementation before mainnet.</p>
+          <span class="status-chip planned">Planned upgrade</span>
+        </article>
+      </section>
+
+      <main class="workspace-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Contract controls</h2>
+            <p>Inspect and call the NFT contract directly.</p>
+          </div>
+
+          <label class="field">
+            <span>Contract address</span>
+            <input id="contractAddress" type="text" value="0x360821bC87bb545Ca8a255f607298fd5C0CE9798" />
+          </label>
+
+          <div class="contract-info">
+            <div>
+              <span>Name</span>
+              <strong id="contractName">—</strong>
+            </div>
+            <div>
+              <span>Symbol</span>
+              <strong id="contractSymbol">—</strong>
+            </div>
+            <div>
+              <span>Public price</span>
+              <strong id="publicPrice">—</strong>
+            </div>
+            <div>
+              <span>GTD price</span>
+              <strong id="gtdPrice">—</strong>
+            </div>
+            <div>
+              <span>Max per wallet</span>
+              <strong id="maxPerWallet">—</strong>
+            </div>
+            <div>
+              <span>USDC token</span>
+              <strong id="usdcAddress">—</strong>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button id="approveButton" class="button primary">Approve USDC</button>
+            <button id="allowanceButton" class="button secondary">Check allowance</button>
+          </div>
+
+          <div class="button-row">
+            <button id="mintButton" class="button primary">Public mint</button>
+            <button id="gtdMintButton" class="button secondary">GTD mint</button>
+          </div>
+
+          <div class="button-row owner-only" id="ownerActions">
+            <button id="setPublicButton" class="button secondary">Toggle public mint</button>
+            <button id="setGtdButton" class="button secondary">Toggle GTD mint</button>
+            <button id="pauseButton" class="button secondary">Pause</button>
+            <button id="unpauseButton" class="button secondary">Unpause</button>
+            <button id="ownerMintButton" class="button secondary">Owner mint 1</button>
+          </div>
+
+          <div class="helper-text">Only the contract owner can use the admin controls.</div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Marketplace testing</h2>
+            <p>List, buy, and cancel items directly from the browser.</p>
+          </div>
+
+          <label class="field">
+            <span>Marketplace contract address</span>
+            <input id="marketplaceAddress" type="text" value="0x0000000000000000000000000000000000000000" />
+          </label>
+
+          <label class="field">
+            <span>NFT contract address</span>
+            <input id="marketNftAddress" type="text" value="0x360821bC87bb545Ca8a255f607298fd5C0CE9798" />
+          </label>
+
+          <div class="contract-info">
+            <label class="field">
+              <span>Token ID</span>
+              <input id="marketTokenId" type="number" value="1" />
+            </label>
+            <label class="field">
+              <span>Price (USDC)</span>
+              <input id="marketPrice" type="number" value="1" />
+            </label>
+          </div>
+
+          <div class="button-row">
+            <button id="listItemButton" class="button primary">List item</button>
+            <button id="cancelListingButton" class="button secondary">Cancel listing</button>
+            <button id="buyItemButton" class="button secondary">Buy item</button>
+          </div>
+
+          <div class="panel-header" style="margin-top: 18px;">
+            <h2>Production-ready checklist</h2>
+            <p>These upgrades move the launch from prototype to a safer mainnet-ready flow.</p>
+          </div>
+
+          <ul class="checklist">
+            <li><strong>Merkle GTD whitelist</strong> — replace the placeholder GTD logic with verified proofs.</li>
+            <li><strong>Per-wallet GTD allocation</strong> — cap each allowlisted wallet to a fixed minted quantity.</li>
+            <li><strong>Team reserve cap</strong> — reserve a defined share of the supply for team or future drops.</li>
+            <li><strong>USDC decimals validation</strong> — ensure pricing and transfers match the exact token standard.</li>
+            <li><strong>Batch admin tools</strong> — support airdrops, metadata updates, and bulk operations.</li>
+            <li><strong>Hardhat tests</strong> — cover success paths, revert cases, and security edge cases.</li>
+          </ul>
+
+          <div class="terminal" id="statusLog">Ready to connect your wallet.</div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.1/ethers.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
