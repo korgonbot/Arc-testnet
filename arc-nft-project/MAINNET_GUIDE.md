@@ -213,7 +213,57 @@ The contracts include safety controls that you should understand before going li
 - `withdrawUSDC()` to withdraw collected USDC
 - `emergencyWithdrawERC20(...)` to recover tokens if needed
 
-## 11. Mainnet launch checklist
+## 11. How the admin should run launch day
+
+On launch day, the admin should use a simple checklist and only change one thing at a time.
+
+### A. Before the public launch
+
+1. Confirm the deployed NFT address and marketplace address.
+2. Confirm the correct USDC address for the chain.
+3. Confirm the metadata has been uploaded to IPFS and the reveal URI is correct.
+4. Set the merkle root if whitelist minting is part of the launch.
+5. Set the GTD allocation per wallet.
+6. Set the team reserve cap so the reserve remains protected.
+7. Turn on the desired minting mode only once everything is verified.
+
+### B. Launch-day controls
+
+The admin should be ready to do these actions from a control panel or from a small admin script:
+
+- Enable public mint
+- Enable GTD minting if using whitelist
+- Pause the contract immediately if anything looks wrong
+- Reveal metadata once the launch begins
+- Freeze metadata after the reveal if you want the metadata to stay fixed
+- Withdraw USDC after the sale is finished, if that is part of your plan
+
+### C. What the frontend should include
+
+Your existing frontend is a good base for an admin dashboard. The most useful additions are:
+
+- Wallet connection status and current chain
+- A section to paste a whitelist and generate a merkle root
+- A section to set GTD allocation and USDC decimals
+- A section to enable or disable public mint and GTD mint
+- A section to pause or unpause the contract
+- A section to reveal metadata and freeze it after reveal
+- A section to show current supply, remaining supply, and mint status
+- A section to view the marketplace address and whether an NFT is approved for listing
+
+### D. Recommended frontend layout
+
+Use your current page as follows:
+
+- Hero panel: wallet, chain, current status
+- First panel: whitelist + merkle root generation
+- Second panel: admin controls for mint toggles, pause, reveal, and freeze
+- Third panel: marketplace actions such as approve, list, cancel, and buy
+- Fourth panel: launch metrics such as sold supply, remaining supply, and treasury balance
+
+That gives the admin a single launch-day screen instead of jumping between multiple tools.
+
+## 12. Mainnet launch checklist
 
 Before you launch on mainnet, verify the following:
 

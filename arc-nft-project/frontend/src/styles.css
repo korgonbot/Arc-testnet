@@ -6,7 +6,7 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: radial-gradient(circle at top left, rgba(109,124,255,0.25), transparent 25%), #060816; }
-button, input, textarea { font: inherit; }
+button, input, textarea, select { font: inherit; }
 .app-shell { max-width: 1240px; margin: 0 auto; padding: 24px; }
 .hero { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 18px; align-items: center; margin-bottom: 20px; }
 .eyebrow { text-transform: uppercase; letter-spacing: 0.24em; color: #35d7ff; font-weight: 700; font-size: 0.78rem; }
@@ -22,6 +22,6 @@ button, input, textarea { font: inherit; }
 .metric-card strong { font-size: 1.4rem; }
 .content-grid, .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
 .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-textarea, input { width: 100%; border-radius: 12px; padding: 12px; margin-top: 8px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: white; }
+textarea, input, select { width: 100%; border-radius: 12px; padding: 12px; margin-top: 8px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.06); color: white; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; }
 @media (max-width: 900px) { .hero, .content-grid, .stats-grid, .card-grid { grid-template-columns: 1fr; } }
